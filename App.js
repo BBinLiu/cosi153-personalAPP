@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Button, StyleSheet, Text, View, Image, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Event from './components/event'
 
 const Stack = createStackNavigator();
 
@@ -13,7 +14,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Welcome to the Exchange' }}
+          options={{ title: 'Welcome to the Hangout!' }}
         />
         <Stack.Screen name="About" component={AboutScreen} />
         <Stack.Screen name="Explore" component={ExploreScreen} />
@@ -27,7 +28,7 @@ const HomeScreen = ({ navigation }) => {
     <View>
       <View style={styles.container2}>
       <Button
-        title="About Exchange"
+        title="About Hangout"
         onPress={() =>
           navigation.navigate('About', { name: 'Bin' })
         }
@@ -46,7 +47,7 @@ const HomeScreen = ({ navigation }) => {
         />
         <TextInput
           style={styles.textInput}
-          defaultValue="Exchange?"
+          defaultValue="Hangout?"
         />
         <Image
           source={"https://i.pinimg.com/originals/4e/c6/88/4ec68829abf2743273beeb93f0a6975b.jpg"}
@@ -58,11 +59,15 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const AboutScreen = ({ navigation, route }) => {
-  return <Text style={styles.header}>Exchange is an app for people to exchange thier stuff or even houses for a period of time to get a new experience!</Text>;
+  return <Text style={styles.header}>Hangout is an app for users to post events and have people to join them!</Text>;
 };
 
 const ExploreScreen = ({ navigation, route }) => {
-  return <Text style={styles.header}>Here you will explore things to exchange! </Text>;
+  return (
+    <View>
+      <Event eventType="Trip"/>
+    </View>
+  )
 };
 
 
